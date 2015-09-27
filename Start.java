@@ -23,14 +23,14 @@ public class Start {
         
         JPanel  menuPanel = new JPanel();
         menuPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
         menuPanel.setPreferredSize(new Dimension(200,600));
-        menuPanel.setBackground(Color.white);
+        menuPanel.setBackground(Color.black);
         
         JPanel mapPanel =  new JPanel();
-        mapPanel.setBackground(Color.lightGray);
-        mapPanel.setLayout(new BorderLayout());
-        mapPanel.resize(300,100);
-        mapPanel.setOpaque(false);
+        mapPanel.setBackground(Color.GRAY);
+//         mapPanel.setLayout(new BorderLayout());
+        mapPanel.resize(300,500);
         
         
         JPanel scorePanel=new JPanel();
@@ -39,6 +39,7 @@ public class Start {
         thumb0.setIcon(score);		
         scorePanel.add(thumb0);
         scorePanel.setPreferredSize(new Dimension(200,100));
+        scorePanel.setBackground(Color.black);
 		
         JButton restartButton = new JButton("Restart");
         restartButton.setPreferredSize(new Dimension(60,40));
@@ -54,9 +55,30 @@ public class Start {
             public void actionPerformed (ActionEvent e){
                     mainFrame.dispose();
             }});
-            
         
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.ipady = 125;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        menuPanel.add(scorePanel,gbc);
+
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.ipady = 20; 
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        menuPanel.add(restartButton,gbc);
         
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.ipady = 20;
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        menuPanel.add(quitButton,gbc);
+        
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.ipady = 250;
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        menuPanel.add(mapPanel,gbc);
         
         
           

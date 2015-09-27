@@ -33,7 +33,7 @@ public class Server {
 		// GUI or not
 		this.sg = sg;
 		// the port
-		this.port = port;
+		this.port = 1500;
 		// to display hh:mm:ss
 		sdf = new SimpleDateFormat("HH:mm:ss");
 		// ArrayList for the Client list
@@ -52,7 +52,7 @@ public class Server {
 			while(keepGoing) 
 			{
 				// format message saying we are waiting
-				display("Server waiting for Clients on port " + port + ".");
+// 				display("Server waiting for Clients on port " + port + ".");
 				
 				Socket socket = serverSocket.accept();  	// accept connection
 				// if I was asked to stop
@@ -108,7 +108,7 @@ public class Server {
 		String time = sdf.format(new Date()) + " " + msg;
 		if(sg == null)
 			System.out.println(time);
-		else
+// 		else
 			sg.appendEvent(time + "\n");
 	}
 	/*
