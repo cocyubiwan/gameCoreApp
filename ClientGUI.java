@@ -51,18 +51,18 @@ public class ClientGUI extends JPanel implements ActionListener {
 		serverAndPort.add(tfPort);
 		serverAndPort.add(new JLabel(""));
 		// adds the Server an port field to the GUI
-		northPanel.add(serverAndPort);
+// 		northPanel.add(serverAndPort);
 
 		// the Label and the TextField
 		label = new JLabel("Enter your username below", SwingConstants.CENTER);
 		northPanel.add(label);
-		tf = new JTextField("Anonymous");
+		tf = new JTextField("Anonymous", 25);
                 tf.setBackground(Color.WHITE);
 		northPanel.add(tf);
 		add(northPanel, BorderLayout.NORTH);
 
 		// The CenterPanel which is the chat room
-		ta = new JTextArea("Welcome to the Chat room\n", 5, 25);
+		ta = new JTextArea("Welcome to the Chat room\n", 10, 25);
 		JPanel centerPanel = new JPanel(new GridLayout(1,1));
 		centerPanel.add(new JScrollPane(ta));
 		ta.setEditable(false);
@@ -85,7 +85,7 @@ public class ClientGUI extends JPanel implements ActionListener {
 		add(southPanel, BorderLayout.SOUTH);
 
 // 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(300, 300);
+		setSize(300, 500);
 		setVisible(true);
 		tf.requestFocus();
 

@@ -5,7 +5,7 @@ import java.awt.event.*;
 /*
  * The server as a GUI
  */
-public class ServerGUI extends JPanel implements ActionListener {
+public class ServerGUI extends JPanel implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
 	// the stop and start buttons
@@ -21,17 +21,29 @@ public class ServerGUI extends JPanel implements ActionListener {
 	// server constructor that receive the port to listen to for connection as parameter
 	ServerGUI(int port) {
 // 	        super("Chat Server");
-                server = null;
-
+                //server = null;
+               
 		// in the NorthPanel the PortNumber the Start and Stop buttons
 		JPanel north = new JPanel();
 		north.add(new JLabel("Port number: "));
 		tPortNumber = new JTextField("  " + port);
+		tPortNumber.setEditable(false);
 		north.add(tPortNumber);
+		
+		 port=1500;
+	
+		// ceate a new Server
+		server = new Server(port, this);
+		// and start it as a thread
+		new ServerRunning().start();
+// 		stopStart.setText("Stop");
+		tPortNumber.setEditable(false);
+
+		
 		// to stop or start the server, we start with "Start"
-		stopStart = new JButton("Start");
-		stopStart.addActionListener(this);
-		north.add(stopStart);
+// 		stopStart = new JButton("Start");
+// 		stopStart.addActionListener(this);
+// 		north.add(stopStart);
 		add(north, BorderLayout.NORTH);
 		
 		// the event and chat room
@@ -64,31 +76,31 @@ public class ServerGUI extends JPanel implements ActionListener {
 		
 	}
 	
-	// start or stop where clicked
+	
 	public void actionPerformed(ActionEvent e) {
-		// if running we have to stop
-		if(server != null) {
-			server.stop();
-			server = null;
-			tPortNumber.setEditable(true);
-			stopStart.setText("Start");
-			return;
-		}
-      	// OK start the server	
-		int port=1500;
-	/*	try {
-			port = Integer.parseInt(tPortNumber.getText().trim());
-		}
-		catch(Exception er) {
-			appendEvent("Invalid port number");
-			return;
-		}		*/
-		// ceate a new Server
-		server = new Server(port, this);
-		// and start it as a thread
-		new ServerRunning().start();
-		stopStart.setText("Stop");
-		tPortNumber.setEditable(false);
+// 		// if running we have to stop
+// 		if(server != null) {
+// 			server.stop();
+// 			server = null;
+// 			tPortNumber.setEditable(false);
+// 			stopStart.setText("Start");
+// 			return;
+// 		}
+//       	// OK start the server	
+// 		int port=1500;
+// 	/*	try {
+// 			port = Integer.parseInt(tPortNumber.getText().trim());
+// 		}
+// 		catch(Exception er) {
+// 			appendEvent("Invalid port number");
+// 			return;
+// 		}		*/
+// 		// ceate a new Server
+// 		server = new Server(port, this);
+// 		// and start it as a thread
+// 		new ServerRunning().start();
+// 		stopStart.setText("Stop");
+// 		tPortNumber.setEditable(false);
 	}
 	
 	// entry point to start the Server
@@ -101,20 +113,7 @@ public class ServerGUI extends JPanel implements ActionListener {
 	 * If the user click the X button to close the application
 	 * I need to close the connection with the server to free the port
 	 */
-	public void windowClosing(WindowEvent e) {
-		// if my Server exist
-		if(server != null) {
-			try {
-				server.stop();			// ask the server to close the conection
-			}
-			catch(Exception eClose) {
-			}
-			server = null;
-		}
-		// dispose the frame
-// 		dispose();
-		System.exit(0);
-	}
+	
 // 	// I can ignore the other WindowListener method
 // 	public void windowClosed(WindowEvent e) {}
 // 	public void windowOpened(WindowEvent e) {}
@@ -130,8 +129,8 @@ public class ServerGUI extends JPanel implements ActionListener {
 		public void run() {
 			server.start();         // should execute until if fails
 			// the server failed
-			stopStart.setText("Start");
-			tPortNumber.setEditable(true);
+// 			stopStart.setText("Start");
+			tPortNumber.setEditable(false);
 			appendEvent("Server crashed\n");
 			server = null;
 		}
