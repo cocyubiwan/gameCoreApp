@@ -27,12 +27,21 @@ public class Start{
         menuPanel.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         menuPanel.setPreferredSize(new Dimension(200,600));
+<<<<<<< HEAD
         menuPanel.setBackground(new Color(255,0,0));
      
         JPanel mapPanel =  new JPanel();
         mapPanel.setBackground(new Color(255,0,0));
 //         mapPanel.setLayout(new BorderLayout());
         mapPanel.resize(150,600);
+=======
+        menuPanel.setBackground(Color.black);
+        
+        JPanel mapPanel =  new JPanel();
+        mapPanel.setBackground(Color.GRAY);
+//         mapPanel.setLayout(new BorderLayout());
+        mapPanel.resize(300,500);
+>>>>>>> 8cc074a9a7e91ca0829babf1e200edc9b0674cc3
         
         
         JPanel scorePanel=new JPanel();
@@ -41,7 +50,11 @@ public class Start{
         thumb0.setIcon(score);		
         scorePanel.add(thumb0);*/
         scorePanel.setPreferredSize(new Dimension(200,100));
+<<<<<<< HEAD
         scorePanel.setBackground(new Color(0,255,0));
+=======
+        scorePanel.setBackground(Color.black);
+>>>>>>> 8cc074a9a7e91ca0829babf1e200edc9b0674cc3
 		
         JButton restartButton = new JButton("START WAR!!");
         restartButton.setPreferredSize(new Dimension(60,40));
@@ -59,7 +72,11 @@ public class Start{
             }});
         
         gbc.fill = GridBagConstraints.HORIZONTAL;
+<<<<<<< HEAD
         gbc.ipady = 5;
+=======
+        gbc.ipady = 125;
+>>>>>>> 8cc074a9a7e91ca0829babf1e200edc9b0674cc3
         gbc.gridx = 0;
         gbc.gridy = 0;
         menuPanel.add(scorePanel,gbc);
